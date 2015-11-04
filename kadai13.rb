@@ -1,14 +1,14 @@
 #!/usr/bin/env ruby
 
 class Student
-    attr_reader :name
+	attr_reader :name
 
 	def initialize(n)
 		@name = n
 	end
 
 	def affiliation
-		return university + faculty
+		return "#{self.university}#{self.faculty}"
 	end
 end
 
