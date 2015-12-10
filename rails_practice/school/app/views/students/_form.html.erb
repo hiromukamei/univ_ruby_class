@@ -1,0 +1,36 @@
+<%= form_for(@student) do |f| %>
+	<% if @student.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+			<ul>
+				<% @student.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+	<div class="field">
+		<%= f.label :name %><br>
+		<%= f.text_field :name %>
+	</div>
+	<div class="field">
+		<%= f.label :faculty_id %><br>
+		<%= f.collection_select :faculty_id, Faculty.all, :id, :name %>
+	</div>
+	<div class="field">
+		<p>Grade</p>
+		<% for i in 1..4 %>
+			<%= f.label :grade, "#{i}年", :value => i %>
+			<%= f.radio_button :grade, i %>
+		<% end %>
+	</div> 
+	<div class="field">
+		<%= f.label :picture_file, '画像' %><br>
+		<%= f.file_field :picture_file %>
+	</div>
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+<% end %>

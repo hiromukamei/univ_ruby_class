@@ -1,0 +1,25 @@
+<h1>Courses#show</h1>
+<p id="notice"><%= notice %></p>
+<table>
+	<tr>
+		<th>科目名</th>
+		<th>単位数</th>
+		<th>必修</th>
+	</tr>
+	<tr>
+		<td><%= @course.name %></td>
+		<td><%= @course.credit %></td>
+		<td><%= @course.compulsory ? '○' : '×' %></td>
+	</tr> 
+</table>
+
+<%= form_tag({action: "file_upload"}, multipart: true) do %>
+		<div class="field">
+			<%= label_tag :file %><br>
+			<%= file_field_tag :file %>
+		</div>
+
+		<div class="actions">
+			<%= submit_tag 'register' %>
+		</div> 
+	<% end %>

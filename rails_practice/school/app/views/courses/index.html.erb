@@ -1,0 +1,15 @@
+<h1>Courses#index</h1>
+<table>
+	<tr>
+		<th>id</th>
+		<th>科目名</th>
+		<th>link</th>
+	</tr>
+	<% @courses.each do |course| %>
+		<tr>
+			<td><%= course.id %></td>
+			<td><%= course.name %></td>
+			<td><%= link_to 'Show', course %></td>
+		</tr> 
+	<% end %>
+</table> 
