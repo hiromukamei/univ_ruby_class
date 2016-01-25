@@ -64,6 +64,14 @@ class StudentsController < ApplicationController
   def picture
 	  send_data(@student.picture_data, type: @student.content_type, disposition: 'inline')
   end
+  
+  def search
+  end
+
+  def result
+	  @students = Student.joins(:scores).where('course_id = ? AND score = ?', params[:course], params[:score])
+	  render :index
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.

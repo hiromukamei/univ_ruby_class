@@ -1,0 +1,14 @@
+<h1>Search for Courses</h1>
+
+<%= form_tag do %>
+
+	<div class="field">
+		<%= label_tag :num, '人数' %>
+		<%= number_field_tag :num, nil %>
+	</div>
+
+	<div class="actions">
+		<%= submit_tag 'Search' %>
+	</div>
+
+<% end %>

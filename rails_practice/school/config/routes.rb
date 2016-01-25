@@ -1,16 +1,28 @@
 Rails.application.routes.draw do
 
+	resources :scores
+
 	resources :faculties, :only => [:show]
 
 	resources :courses, :only => [:index, :show] do
 		member do
 			post :file_upload 
 		end
+
+		collection do
+			get :search
+			post :search, :action => :result
+		end
 	end
 
 	resources :students do
 		member do
 			get :picture
+		end
+
+		collection do
+			get :search
+			post :search, :action => :result
 		end
 	end
   # The priority is based upon order of creation: first created -> highest priority.

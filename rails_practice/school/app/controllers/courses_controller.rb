@@ -19,6 +19,23 @@ class CoursesController < ApplicationController
 		end
 	end
 
+	def search
+	end
+
+	def result
+		num = params[:num].to_i
+		joined = Course.joins(:scores)
+		ids = joined.distinct.pluck(:id)
+		rid = Array.new
+		ids.each do |id|
+			if joined.where('course_id = ?', id).count >= num
+				rid.push(id)
+			end
+		end
+		@courses = joined.where(id: rid).distinct
+		render :index
+	end
+
 	private
 	def set_course
 		@course = Course.find(params[:id])
